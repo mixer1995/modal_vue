@@ -1,26 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>{{ title }}</h1>
+    <Modal v-show="modalBool" @close="toggleModal">
+        <template v-slot:links>
+            <a href="https://www.google.com" target="_blank">google</a>
+        </template>
+        <h2>HEYYYY</h2>
+    </Modal>
+    <button @click="toggleModal">Show modal</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Modal from "./components/Modal";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: 'App',
+    components: {
+        Modal
+    },
+    data() {
+        return {
+            title: "My first Vue 3 App",
+            modalBool: false
+        }
+    },
+    methods: {
+        toggleModal() {
+            this.modalBool = !this.modalBool;
+        }
+    }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    * {
+        margin: 0;
+        padding: 0;
+    }
 </style>
